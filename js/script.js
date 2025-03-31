@@ -1,6 +1,7 @@
 function guessNumberGame() {
   const randomNumber = Math.floor(Math.random() * 10) + 1;
   let guess = null;
+  let attempts = 0;
   let promptText = "Enter a number from 1 to 10";
   
   while (guess !== randomNumber) { // While-loop to continue looping until the user's guess matches the random number
@@ -19,6 +20,7 @@ function guessNumberGame() {
           continue;
       }
 
+      attempts++; // Increase the number of attempts
   
       if (guess < randomNumber) { 
           promptText = "Go a little higher"; // Update the prompt message to inform the user that their guess is too low/high
@@ -30,7 +32,7 @@ function guessNumberGame() {
   
       if (guess === randomNumber) {
           const message = document.getElementById("message");
-          message.textContent = `Brilliant, number ${randomNumber} is correct!`;
+          message.textContent = `Brilliant, number ${randomNumber} is correct! You guessed it in just ${attempts} attempts!`;
       }
   }
   }
